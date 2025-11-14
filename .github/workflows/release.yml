@@ -72,16 +72,33 @@ jobs:
           path: target
           key: ${{ runner.os }}-cargo-build-target-${{ hashFiles('**/Cargo.lock') }}
 
+      - name: Check linker config (debug)
+        if: matrix.target == 'aarch64-unknown-linux-gnu'
+        run: |
+          echo "---- Project files ----"
+          find . -maxdepth 3 -type f
+
+          echo "---- .cargo/config.toml ----"
+          cat .cargo/config.toml || echo "No config.toml found!"
+
+          echo "---- cargo verbose build (to verify actual linker) ----"
+          cargo build --target aarch64-unknown-linux-gnu -v || true
+
       - name: Build binary
         run: |
           cargo build --release --target ${{ matrix.target }}
+        shell: bash
 
-      - name: Strip binary (Unix)
-        if: runner.os != 'Windows'
+      - name: Strip binary (ARM64)
+        if: matrix.target == 'aarch64-unknown-linux-gnu'
+        run: aarch64-linux-gnu-strip ${{ matrix.artifact_name }}
+
+      - name: Strip binary (other Unix)
+        if: runner.os != 'Windows' && matrix.target != 'aarch64-unknown-linux-gnu'
         run: strip ${{ matrix.artifact_name }}
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.release_name }}
           path: ${{ matrix.artifact_name }}
