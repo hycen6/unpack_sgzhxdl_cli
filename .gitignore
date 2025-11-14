@@ -1,0 +1,13 @@
+*.zip
+.DS_Store
+**.atlas
+**.skel
+**.png
+!static/*.png
+/target/
+**/*.rs.bk
+Cargo.lock
+miniRes
+udp
+skels
+atlas
