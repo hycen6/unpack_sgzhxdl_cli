@@ -4,6 +4,8 @@ version = "0.1.0"
 edition = "2021"
 description = "三幻立绘资源复原辅助工具"
 authors = ["hycen6 <dconghua@gmail.com>"]
+license = "MIT"
+repository = "https://github.com/hycen6/unpack_sgzhxdl_cli"
 
 [dependencies]
 clap = { version = "4.4", features = ["derive"] }
