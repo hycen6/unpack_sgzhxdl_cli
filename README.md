@@ -18,12 +18,58 @@
 
 ## 🚀 快速开始
 
-### 安装前提
+### 方式一：下载预编译可执行文件（推荐）
 
+从 [GitHub Releases](https://github.com/hycen6/unpack_sgzhxdl_cli/releases) 下载对应平台的可执行文件：
+
+#### Windows 用户
+1. 下载 `unpack_sgzhxdl_cli-windows-x86_64.exe`
+2. 直接双击运行或在命令行执行：
+   ```cmd
+   unpack_sgzhxdl_cli-windows-x86_64.exe
+   ```
+3. **首次使用可能遇到的安全提示**：
+   - 如果遇到 Windows SmartScreen 阻止，点击"更多信息" → "仍要运行"
+   - 如果遇到杀毒软件拦截，需要添加到白名单或信任列表
+   - 这是正常的，因为可执行文件没有数字签名
+
+#### macOS 用户
+1. 下载 `unpack_sgzhxdl_cli-macos-aarch64（Apple Silicon）` 或 `unpack_sgzhxdl_cli-macos-x86_64（Intel）`（根据芯片选择）
+2. **首次使用需要设置权限**：
+   ```bash
+   # 赋予可执行权限
+   <!-- 苹果芯片 -->
+   chmod +x unpack_sgzhxdl_cli-macos-aarch64
+   <!-- 英特尔 -->
+   chmod +x unpack_sgzhxdl_cli-macos-x86_64
+
+   # 运行程序
+   <!-- 苹果芯片 -->
+   ./unpack_sgzhxdl_cli-macos-aarch64
+   <!-- 英特尔 -->
+   ./unpack_sgzhxdl_cli-macos-x86_64
+   ```
+3. 如果出现"无法打开，因为无法验证开发者"的提示：
+   - 打开 **系统设置 → 隐私与安全性**
+   - 找到"安全性"部分，点击"仍要打开"
+   - 或者在 Finder 中右键点击应用 → "打开" → "打开"
+
+#### Linux 用户
+1. 下载 `unpack_sgzhxdl_cli-linux-aarch64`或`unpack_sgzhxdl_cli-linux-x86_64`（根据芯片选择）
+2. 赋予可执行权限并运行：
+   ```bash
+   chmod +x unpack_sgzhxdl_cli-linux-aarch64
+   ./unpack_sgzhxdl_cli-linux-aarch64
+   ```
+
+---
+
+### 方式二：手动编译（适合开发者）
+
+#### 安装前提
 - Rust 1.70+ （推荐使用 [rustup](https://rustup.rs/) 安装）
 
-### 依赖说明
-
+#### 依赖说明
 - `clap`: CLI参数解析
 - `anyhow`: 错误处理
 - `rayon`: 并行处理
@@ -32,8 +78,7 @@
 - `console`: 终端样式
 - `dialoguer`: 交互式界面
 
-### 编译安装
-
+#### 编译安装
 ```bash
 # 克隆项目
 git clone https://github.com/hycen6/unpack_sgzhxdl_cli
@@ -43,8 +88,7 @@ cd unpack_sgzhxdl_cli
 cargo build --release
 ```
 
-### 运行程序
-
+#### 运行程序
 ```bash
 # 运行程序（推荐）
 ./target/release/unpack_sgzhxdl_cli
@@ -55,13 +99,23 @@ cargo build --release
 ./target/release/unpack_sgzhxdl_cli -w 美术资源目录（例如./miniRes或./udp）
 ```
 
+---
 
-### CLI命令选项
+### 使用说明
+
+无论使用哪种方式启动，程序都支持以下命令选项：
 
 ```bash
 # 显示帮助信息
-./target/release/unpack_sgzhxdl_cli --help
+unpack_sgzhxdl_cli --help
+
+# 直接指定工作目录
+unpack_sgzhxdl_cli --work-dir 美术资源目录（例如./miniRes或./udp）
+# 指定工作目录简写
+unpack_sgzhxdl_cli -w 美术资源目录（例如./miniRes或./udp）
 ```
+
+
 
 ## 📋 使用流程
 
