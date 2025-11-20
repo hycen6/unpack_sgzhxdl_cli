@@ -38,15 +38,15 @@
 2. **首次使用需要设置权限**：
    ```bash
    # 赋予可执行权限
-   <!-- 苹果芯片 -->
+   # 苹果芯片
    chmod +x unpack_sgzhxdl_cli-macos-aarch64
-   <!-- 英特尔 -->
+   # 英特尔
    chmod +x unpack_sgzhxdl_cli-macos-x86_64
 
    # 运行程序
-   <!-- 苹果芯片 -->
+   # 苹果芯片
    ./unpack_sgzhxdl_cli-macos-aarch64
-   <!-- 英特尔 -->
+   # 英特尔
    ./unpack_sgzhxdl_cli-macos-x86_64
    ```
 3. 如果出现"无法打开，因为无法验证开发者"的提示：
